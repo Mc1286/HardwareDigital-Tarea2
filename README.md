@@ -25,11 +25,8 @@ El protocolo de comunicación define tramas con la siguiente estructura y un mec
 
 ## Instrucciones de Compilación y Ejecución
 1. Clonar este repositorio en la máquina local.
-2. Cargar el código `esclavo.ino` en la primera placa Arduino UNO.
-3. Cargar el código `maestro.ino` en la segunda placa Arduino UNO.
+2. Cargar el código `maestro.ino` en la primera placa Arduino UNO.
+3. Cargar el código `esclavo.ino` en la segunda placa Arduino UNO.
 4. Conectar los pines TX del Maestro al RX del Esclavo, y viceversa. Unir las tierras (GND) de ambas placas.
 5. Abrir el Monitor Serie conectado al Nodo Maestro configurado a 9600 baudios para visualizar la telemetría consolidada y los diagnósticos de red.
 
-## Diagrama del Montaje
-![Diagrama del circuito en Tinkercad](ruta-a-tu-imagen/montaje.png)
-*(Nota: Recuerden subir la captura de pantalla de su Tinkercad a la carpeta del repositorio y actualizar este enlace).*
