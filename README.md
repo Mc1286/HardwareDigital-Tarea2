@@ -5,7 +5,7 @@ Para dar cumplimiento a la pauta de evaluación, se documenta la siguiente distr
 * **Mathias Salinas:** *Documentador*
 * **Matias Cabrera:** *desarrollo de firmware*
 * **Juan Cortez:** *desarrollo de firmware*
-* **Juan Pablo Villarroel:** *jefe*
+* **Juan Pablo Villarroel:** *jefe de proyecto*
 * **Fabián Mamani:** *Arquitecto del Protocolo*
 
 ---
