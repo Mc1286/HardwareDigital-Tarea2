@@ -2,11 +2,11 @@
 
 ## Equipo de Desarrollo y Roles
 Para dar cumplimiento a la pauta de evaluación, se documenta la siguiente distribución de roles técnicos para el proyecto:
-* **Mathias Salinas:** *N/A*
-* **Matias Cabrera:** *N/A*
-* **Juan Cortez:** *N/A*
-* **Juan Pablo Villarroel:** *N/A*
-* **Fabián Mamani:** *N/A*
+* **Mathias Salinas:** *Documentador*
+* **Matias Cabrera:** *desarrollo de firmware*
+* **Juan Cortez:** *desarrollo de firmware*
+* **Juan Pablo Villarroel:** *jefe*
+* **Fabián Mamani:** *Arquitecto del Protocolo*
 
 ---
 
