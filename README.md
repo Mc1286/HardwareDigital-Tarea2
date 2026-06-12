@@ -53,3 +53,19 @@ A continuación, se presenta el esquema de conexiones y la disposición de hardw
 3. Abrir y cargar el código localizado en la carpeta `/Esclavo/Esclavo.ino` en la segunda placa Arduino UNO.
 4. Conectar físicamente (o en el simulador) el pin **TX (1)** del Maestro al pin **RX (0)** del Esclavo, y viceversa (TX Esclavo a RX Maestro). Unir las tierras (**GND**) de ambas placas.
 5. Abrir el Monitor Serie conectado exclusivamente al Nodo Maestro, configurado a 9600 baudios, para visualizar la telemetría consolidada y los diagnósticos de red.
+   
+---
+
+## Alerta de Sincronización UART:
+
+Durante el proceso de flasheo de las placas, debes tener en cuenta la siguiente restricción de hardware:
+
+**No se debe cargar código mientras los buses TX/RX estén interconectados.**
+
+### Explicación del problema
+El puerto serie por hardware (UART0, pines 0 y 1) está multiplexado con el conversor USB-Serial de la placa. Si dos Arduinos mantienen comunicación física durante la carga, el flujo de datos del *bootloader* se interrumpe por el ruido del segundo microcontrolador, resultando en un error de sincronización de subida.
+
+### Procedimiento correcto
+1. Desconectar físicamente la línea de datos entre el `RX` y `TX` de ambas placas.
+2. Compilar y subir el código fuente de manera independiente a cada microcontrolador.
+3. Volver a establecer la conexión cruzada (`RX` a `TX` y `TX` a `RX`) para la ejecución del sistema.
