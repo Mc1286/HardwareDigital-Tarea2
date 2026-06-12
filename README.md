@@ -43,7 +43,7 @@ El protocolo de comunicación define tramas con la siguiente estructura y un mec
 ## Diagrama del Montaje (Tinkercad)
 A continuación, se presenta el esquema de conexiones y la disposición de hardware utilizada para la simulación y validación del sistema.
 
-![Diagrama del Circuito](montaje_tinkercad.png)
+![Diagrama del Circuito](https://github.com/user-attachments/assets/bd506d7e-c247-48e6-8df7-4ccd0bdf90f8)
 
 ---
 
