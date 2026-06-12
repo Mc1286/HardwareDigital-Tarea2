@@ -49,7 +49,7 @@ A continuación, se presenta el esquema de conexiones y la disposición de hardw
 
 ## Instrucciones de Compilación y Ejecución
 
-> ⚠️ **Alerta de Sincronización UART (`avrdude: sync error`)**
+>  **Alerta de Sincronización UART (`avrdude: sync error`)**
 > Durante el proceso de flasheo de las placas, **no se debe cargar código mientras los pines 0 (RX) y 1 (TX) estén interconectados**. 
 > *Explicación técnica:* El puerto serie por hardware (UART0) del ATmega328P está multiplexado con el chip conversor USB de la placa. Si los Arduinos mantienen conexión física durante la carga, el flujo de datos de tu PC hacia el *bootloader* chocará con las señales del otro microcontrolador, abortando la subida del código.
 
