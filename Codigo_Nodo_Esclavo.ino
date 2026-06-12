@@ -54,14 +54,16 @@ void procesarSolicitud() {
   byte idRecepcionado = bufferRX[1];
   byte lenRecepcionado = bufferRX[2];
   byte chkRecepcionado = bufferRX[3];
-  
+
+  // Validación de integridad mediante compuerta lógica XOR.
   byte chkCalculado = idRecepcionado ^ lenRecepcionado;
   
-  // Descartar si el paquete llego corrupto
+  // Descartar si el paquete llego corrupto, abortamos el procesamiento y reportamos el error.
   if (chkCalculado != chkRecepcionado) {
     return; 
   }
-  
+
+  // ID 0x01: Solicitud de telemetría desde el Maestro.
   if (idRecepcionado == 0x01) {
     enviarDatosLDR();
   }
@@ -70,15 +72,18 @@ void procesarSolicitud() {
 // Empaqueta la lectura del ADC y transmite la respuesta
 void enviarDatosLDR() {
   int valorCrudo = analogRead(pinLDR); 
-  
+
+  // Desplazamiento y enmascaramiento de bits para separar el int (16 bits) en dos bytes (8 bits)
   byte dataHigh = highByte(valorCrudo);
   byte dataLow = lowByte(valorCrudo);
   
   byte idEnvio = 0x02; 
   byte lenEnvio = 0x02; 
-  
+
+  // Generación del Checksum de salida integrando todos los campos de datos
   byte chkEnvio = idEnvio ^ lenEnvio ^ dataHigh ^ dataLow;
-  
+
+  // Transmisión de la trama completa byte a byte
   Serial.write(SOF);
   Serial.write(idEnvio);
   Serial.write(lenEnvio);
