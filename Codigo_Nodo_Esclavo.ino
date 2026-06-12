@@ -6,7 +6,8 @@
 
 const int pinLDR = A1;
 
-const byte SOF = 0xAA; // Byte de sincronizacion
+// 0xAA (10101010 en binario) es ideal como byte de sincronización debido a la alternancia de sus bits en la capa física.
+const byte SOF = 0xAA;
 byte bufferRX[10];
 int indexRX = 0;
 bool mensajeCompleto = false;
@@ -16,29 +17,31 @@ void setup() {
 }
 
 void loop() {
-  // El loop principal queda liberado.
+  // El procesador queda liberado de tareas de espera bloqueante.
   // Solo procesamos si la interrupcion UART armo la trama.
   if (mensajeCompleto) {
     procesarSolicitud();
     
-    // Reiniciamos las variables
+    // Reiniciamos los punteros de memoria para la próxima interrupción.
     indexRX = 0;
     mensajeCompleto = false;
   }
 }
 
-// Interrupcion UART: recibe bytes en segundo plano
+// Interrupción UART: El hardware recibe los bits, llena el buffer interno del microcontrolador y esta función extrae los bytes en segundo plano.
 void serialEvent() {
   while (Serial.available() && !mensajeCompleto) {
     byte byteEntrante = Serial.read();
-    
+
+    // Filtro de ruido: descartamos cualquier byte basura hasta encontrar el SOF
     if (indexRX == 0 && byteEntrante != SOF) {
       continue; 
     }
     
     bufferRX[indexRX] = byteEntrante;
     indexRX++;
-    
+
+    // La petición estándar del Maestro (Lectura) consta de exactamente 4 bytes
     if (indexRX >= 4) {
       mensajeCompleto = true;
       break; 
